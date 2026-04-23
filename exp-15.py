@@ -1,65 +1,50 @@
 
-book
-stack program
-Sonal Chanderi
-•
-Apr 13
-14 and 15 program
-stack.py
-Text
+from collections import deque
 
-Queue.py
-Text
-
-Class comments
-
-Add class comment…
-
-Material details
-class Stack:
+class Queue:
     def __init__(self):
-        self.stack = []
+        self.queue = deque()
 
-    def push(self, item):
-        self.stack.append(item)
-        print(item, "pushed into stack")
+    def enqueue(self, item):
+        self.queue.append(item)
+        print(item, "added to queue")
 
-    def safe_pop(self):
-        if len(self.stack) == 0:
-            print("Stack is empty, nothing to pop.")
+    def safe_dequeue(self):
+        if len(self.queue) == 0:
+            print("Queue is empty, cannot dequeue.")
             return None
         else:
-            return self.stack.pop()
+            return self.queue.popleft()
 
     def display(self):
-        print("Stack elements:", self.stack)
+        print("Queue elements:", list(self.queue))
 
 
-# Main program
-s = Stack()
+# Main Program
+q = Queue()
 
 while True:
-    print("\n1. Push")
-    print("2. Pop")
+    print("\n1. Enqueue")
+    print("2. Dequeue")
     print("3. Display")
     print("4. Exit")
 
     choice = int(input("Enter your choice: "))
 
     if choice == 1:
-        item = int(input("Enter element to push: "))
-        s.push(item)
+        item = int(input("Enter element to enqueue: "))
+        q.enqueue(item)
 
     elif choice == 2:
-        result = s.safe_pop()
-        print("Popped element:", result)
+        result = q.safe_dequeue()
+        print("Dequeued element:", result)
 
     elif choice == 3:
-        s.display()
+        q.display()
 
     elif choice == 4:
         print("Exiting program...")
         break
 
     else:
-        print("Invalid choice! Try again.")
+        print("Invalid choice! Try again."
